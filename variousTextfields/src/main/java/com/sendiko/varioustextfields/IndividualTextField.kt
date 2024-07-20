@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -16,11 +17,13 @@ import androidx.compose.ui.unit.sp
 fun IndividualTextField(
     modifier: Modifier = Modifier,
     value: String,
-    index: Int
+    index: Int,
+    unfocusedBorderColor: Color?,
+    focusedBorderColor: Color?,
 ) {
     val char = getChar(value, index)
-    val outlineColor = if (char.isNullOrBlank()) MaterialTheme.colorScheme.outline
-    else MaterialTheme.colorScheme.primary
+    val outlineColor = if (char.isNullOrBlank()) unfocusedBorderColor ?: MaterialTheme.colorScheme.outline
+    else focusedBorderColor ?: MaterialTheme.colorScheme.primary
     Box(
         modifier = modifier
             .border(width = 1.dp, color = outlineColor, shape = RoundedCornerShape(4.dp)),
