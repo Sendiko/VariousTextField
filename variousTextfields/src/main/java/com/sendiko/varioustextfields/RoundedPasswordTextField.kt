@@ -13,6 +13,8 @@ import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 
 /**
  *
@@ -71,6 +73,7 @@ fun RoundedPasswordTextField(
                     Icon(imageVector = Icons.Rounded.VisibilityOff, contentDescription = null)
                 }
             }
-        }
+        },
+        visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation()
     )
 }
